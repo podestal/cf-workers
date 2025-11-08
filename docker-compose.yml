@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  cf-dev:
+    ports:
+      - 8787:8787
+    build:
+      context: .
+      args:
+        USER_UID: ${HOST_UID:-1000}
+        USER_GID: ${HOST_GID:-1000}
+    image: cloudflare-dev:latest
+    # mount the current project folder into /workspace inside the container
+    volumes:
+      - ./:/workspace:cached
+      - /workspace/node_modules
+    environment:
+      - HOME=/home/dev
+      - USER=dev
+      - NODE_ENV=development
+      - CF_ACCOUNT_ID=${CF_ACCOUNT_ID}
+      - CF_API_TOKEN=${CF_API_TOKEN}
+    stdin_open: true
+    tty: true
+
