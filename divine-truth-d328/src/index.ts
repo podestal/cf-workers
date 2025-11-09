@@ -10,9 +10,48 @@
  *
  * Learn more at https://developers.cloudflare.com/workers/
  */
+import { Hono } from 'hono';
 
-export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hola!');
-	},
-} satisfies ExportedHandler<Env>;
+const app = new Hono();
+
+// app.get('/', (c) => c.text('Hola!'));
+
+app.get('/', (c) => {
+	return c.text('Hola!');
+});
+
+app.get('/customers', c => {
+	return c.json([{
+		id: 1,
+		name: 'John Doe',
+		email: 'john.doe@example.com',
+		phone: '+1234567890',
+		address: '123 Main St, Anytown, USA',
+		city: 'Anytown',
+		state: 'CA',
+		zip: '12345',
+		country: 'USA',
+	}, {
+		id: 2,
+		name: 'Jane Doe',
+		email: 'jane.doe@example.com',
+		phone: '+1234567890',
+		address: '123 Main St, Anytown, USA',
+		city: 'Anytown',
+		state: 'CA',
+		zip: '12345',
+		country: 'USA',
+	}])
+})
+
+app.get('/customers/:id', c => {
+	const id = c.req.param('id');
+	return c.json({
+		id: parseInt(id),
+		name: 'John Doe',
+		email: 'john.doe@example.com',
+		phone: '+1234567890',
+	})
+})
+
+export default app;
