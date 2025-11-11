@@ -11,14 +11,20 @@
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.8.19",
+		"@types/pg": "^8.15.6",
+		"drizzle-kit": "^0.31.6",
+		"tsx": "^4.20.6",
 		"typescript": "^5.5.2",
 		"vitest": "~3.2.0",
 		"wrangler": "^4.46.0"
 	},
 	"dependencies": {
 		"@hono/zod-openapi": "^1.1.4",
+		"dotenv": "^17.2.3",
+		"drizzle-orm": "^0.44.7",
 		"hono": "^4.10.4",
 		"hono-pino": "^0.10.3",
+		"pg": "^8.16.3",
 		"pino": "^10.1.0",
 		"stoker": "^2.0.1",
 		"uuid": "^13.0.0",
