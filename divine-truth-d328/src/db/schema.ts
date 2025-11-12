@@ -15,7 +15,7 @@ export const usersTable = pgTable('users', {
 
 export const todosTable = pgTable('todos', {
     id: uuid().primaryKey().defaultRandom(),
-    userId: uuid().notNull().references(() => usersTable.id {
+    userId: uuid().notNull().references(() => usersTable.id, {
         onDelete: 'cascade',
     }),
     title: varchar({ length: 500 }).notNull(),
