@@ -4,10 +4,10 @@
 	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
-		"dev": "wrangler dev",
+		"dev": "pnpm exec wrangler dev --ip=0.0.0.0 --port=8787",
 		"db:generate:migration": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate",
-		"db:studio": "drizzle-kit studio",
+		"db:studio": "drizzle-kit studio --host=0.0.0.0 --port=4983",
 		"start": "wrangler dev",
 		"test": "vitest",
 		"cf-typegen": "wrangler types"

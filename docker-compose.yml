@@ -10,9 +10,12 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=todo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   cf-dev:
     ports:
       - 8787:8787
+      - 4983:4983
     build:
       context: .
       args:
@@ -32,3 +35,5 @@ services:
     stdin_open: true
     tty: true
 
+volumes:
+  pgdata:
